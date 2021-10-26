@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.Rendering.PostProcessing;
 
 public class UIController : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class UIController : MonoBehaviour
     GameData gd;
     PlayerWeapon pw;
     Health playerHealth;
+    [SerializeField]PostProcessVolume ppv;
     private void Awake()
     {
 
@@ -38,13 +40,26 @@ public class UIController : MonoBehaviour
         ammoCount.text = pw.ammo.ToString();
 
         SetHearts(playerHealth.CurrentHP);
-        if (playerHealth.CurrentHP <= 0)
+        if(playerHealth.CurrentHP == 1)
+        {
+            ChangeVignette(true);
+        }
+        else if (playerHealth.CurrentHP <= 0)
         {
             gd.SaveData();
             ChangeStates(gameCanvas, deathCanvas);
             Time.timeScale = 0;
         }
+        else
+        {
+            ChangeVignette(false);
+        }
             
+    }
+    private void ChangeVignette(bool what)
+    {
+        if (ppv.profile.TryGetSettings<Vignette>(out var vignette))
+            vignette.active = what;
     }
     public void OnPauseClick()
     {
@@ -71,6 +86,7 @@ public class UIController : MonoBehaviour
     }
     public void ToMainMenu()
     {
+        gd.SaveData();
         LevelLoader.Instance.LoadScene(0);
     }
     void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
