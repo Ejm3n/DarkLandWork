@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using DigitalRuby.SoundManagerNamespace;
 
 public class MainMenu : MonoBehaviour
 {
@@ -42,6 +43,10 @@ public class MainMenu : MonoBehaviour
     public void ExitGame()
     {
         Application.Quit();
+    }
+    public void PressButtonSound()
+    {
+        SoundManagerDemo.Instance.ButtonPressSound();
     }
     void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
     {

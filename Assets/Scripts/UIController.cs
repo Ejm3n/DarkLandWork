@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using UnityEngine.Rendering.PostProcessing;
+using DigitalRuby.SoundManagerNamespace;
 
 public class UIController : MonoBehaviour
 {
@@ -113,5 +114,9 @@ public class UIController : MonoBehaviour
         {
             heartAnims[j].SetBool("IsFull", false);
         }
+    }
+    public void PressButtonSound()
+    {
+        SoundManagerDemo.Instance.ButtonPressSound();
     }
 }

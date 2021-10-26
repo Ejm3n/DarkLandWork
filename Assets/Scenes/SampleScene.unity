@@ -2657,6 +2657,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 780553388}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PressButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &343870778
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3898,10 +3910,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
@@ -3909,7 +3925,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 780553388}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 780553388}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
@@ -3917,11 +3941,23 @@ PrefabInstance:
       value: OnPauseClick
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PressButtonSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8428775549365569203, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8428775549370959155, guid: f4031f60b4b2043419ed5af4957a7172, type: 3}
@@ -5745,6 +5781,18 @@ MonoBehaviour:
       - m_Target: {fileID: 780553388}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnRestart
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 780553388}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7921,10 +7969,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -7932,7 +7984,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 780553388}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 780553388}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -7940,11 +8000,23 @@ PrefabInstance:
       value: BackToPauseMenu
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PressButtonSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11418640, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 11421234, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -7957,10 +8029,14 @@ PrefabInstance:
       objectReference: {fileID: 21300000, guid: 15d7316ae86a58d48b7a2ace54743b68, type: 3}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -7968,7 +8044,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 780553388}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 780553388}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -7976,11 +8060,23 @@ PrefabInstance:
       value: ToMainMenu
       objectReference: {fileID: 0}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PressButtonSound
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UIController, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: UIController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 11429830, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 22431222, guid: 332b5aa19ba56184d8d61bc44067e3a7, type: 3}
@@ -19093,6 +19189,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 780553388}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PressButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1402330530695835616
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19247,6 +19355,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 780553388}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PressButtonSound
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1402330530695847026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19378,6 +19498,18 @@ MonoBehaviour:
       - m_Target: {fileID: 780553388}
         m_TargetAssemblyTypeName: UIController, Assembly-CSharp
         m_MethodName: OnResume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 780553388}
+        m_TargetAssemblyTypeName: UIController, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

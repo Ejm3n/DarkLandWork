@@ -4360,10 +4360,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5605,10 +5604,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5694,10 +5692,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -5843,10 +5840,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6448,10 +6444,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6517,10 +6512,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 628394333}
-        m_TargetAssemblyTypeName: DigitalRuby.SoundManagerNamespace.SoundManagerDemo,
-          Assembly-CSharp
-        m_MethodName: ButtonPressSound
+      - m_Target: {fileID: 584248831}
+        m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
+        m_MethodName: PressButtonSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

@@ -37,6 +37,7 @@ namespace DigitalRuby.SoundManagerNamespace
         }
         private void Awake()
         {
+            
             DontDestroyOnLoad(this.gameObject);
             int objectsCount = FindObjectsOfType<SoundManagerDemo>().Length;
 
@@ -51,6 +52,15 @@ namespace DigitalRuby.SoundManagerNamespace
             }
 
             
+        }
+        private void Start()
+        {
+            Button[] buttons = FindObjectsOfType<Button>();
+            Debug.Log(buttons.Length);
+            foreach (Button but in buttons)
+            {
+                but.onClick.AddListener(() => ButtonPressSound());
+            }
         }
         private void FindSliders()
         {
