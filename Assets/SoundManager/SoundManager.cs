@@ -1,4 +1,4 @@
-﻿    /*
+﻿/*
 Simple Sound Manager (c) 2016 Digital Ruby, LLC
 http://www.digitalruby.com
 
