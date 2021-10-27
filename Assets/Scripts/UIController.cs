@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     [SerializeField] Text currentScore;
     [SerializeField] Animator[] heartAnims;
     [SerializeField] Text bestScore;
+    [SerializeField] Text deathCurrentScore;
+    [SerializeField] Text deathBestScore;
     GameData gd;
     PlayerWeapon pw;
     Health playerHealth;
@@ -46,8 +48,10 @@ public class UIController : MonoBehaviour
             ChangeVignette(true);
         }
         else if (playerHealth.CurrentHP <= 0)
-        {
+        {            
             gd.SaveData();
+            deathCurrentScore.text = currentScore.text;
+            deathBestScore.text = bestScore.text;
             ChangeStates(gameCanvas, deathCanvas);
             Time.timeScale = 0;
         }
