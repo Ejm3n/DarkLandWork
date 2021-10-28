@@ -24,7 +24,8 @@ public class Spawner : MonoBehaviour
     [SerializeField] List<List<GameObject>> bonusesOnScene = new List<List<GameObject>>();
 
     [SerializeField] Transform[] BonusesSpawnPoints;
-    int currentPoint = 0;
+    int currentBonusPoint = 0;
+    int currentEnemySpawnPoint = 0;
     private void Awake()
     {
         for (int i = 0; i < enemies.Count; i++)
@@ -60,19 +61,19 @@ public class Spawner : MonoBehaviour
             {
                 GameObject enemy = DeactivatedEnemiesOnScene[i][DeactivatedEnemiesOnScene[i].Count - 1];
                 DeactivatedEnemiesOnScene[i].RemoveAt(DeactivatedEnemiesOnScene[i].Count - 1);
-                enemy.transform.position = SpawnPoints[currentPoint].position;
+                enemy.transform.position = SpawnPoints[currentEnemySpawnPoint].position;
                 enemy.GetComponent<Health>().Revive();
                 enemy.SetActive(true);
 
                 ActiveEnemiesOnScene[i].Add(enemy);
 
-                if (currentPoint < SpawnPoints.Length - 1)
+                if (currentEnemySpawnPoint < SpawnPoints.Length - 1)
                 {
-                    currentPoint++;
+                    currentEnemySpawnPoint++;
                 }
                 else
                 {
-                    currentPoint = 0;
+                    currentEnemySpawnPoint = 0;
                 }
             }
         }
@@ -103,20 +104,20 @@ public class Spawner : MonoBehaviour
                 {
                     if (!bonusesOnScene[0][i].activeInHierarchy)
                     {
-                        bonusesOnScene[0][i].transform.position = BonusesSpawnPoints[currentPoint].position;
+                        bonusesOnScene[0][i].transform.position = BonusesSpawnPoints[currentBonusPoint].position;
                         bonusesOnScene[0][i].SetActive(true);
                         break;
                     }
 
                     
                 }
-                if (currentPoint < BonusesSpawnPoints.Length - 1)
+                if (currentBonusPoint < BonusesSpawnPoints.Length - 1)
                 {
-                    currentPoint++;
+                    currentBonusPoint++;
                 }
                 else
                 {
-                    currentPoint = 0;
+                    currentBonusPoint = 0;
                 }
             }
         }
@@ -132,20 +133,20 @@ public class Spawner : MonoBehaviour
                 {
                     if (!bonusesOnScene[1][i].activeInHierarchy)
                     {
-                        bonusesOnScene[1][i].transform.position = BonusesSpawnPoints[currentPoint].position;
+                        bonusesOnScene[1][i].transform.position = BonusesSpawnPoints[currentBonusPoint].position;
                         bonusesOnScene[1][i].SetActive(true);
                         break;
                     }
 
                     
                 }
-                if (currentPoint < BonusesSpawnPoints.Length - 1)
+                if (currentBonusPoint < BonusesSpawnPoints.Length - 1)
                 {
-                    currentPoint++;
+                    currentBonusPoint++;
                 }
                 else
                 {
-                    currentPoint = 0;
+                    currentBonusPoint = 0;
                 }
             }
         }
