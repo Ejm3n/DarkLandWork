@@ -50,7 +50,11 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
-
+    private void OnEnable()
+    {
+        agent.enabled = true;
+        alive = true;
+    }
     private void Die()
     {
         SoundManagerDemo.Instance.ZombieDeath(TypeNum);
@@ -94,6 +98,5 @@ public class EnemyController : MonoBehaviour
     {       
         if(Vector3.Distance(transform.position, player.position) < distanceToDoDamage)
             player.gameObject.GetComponent<Health>().TakeDamage(damage);
-        Debug.Log("HIT!");
     }
 }

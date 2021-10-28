@@ -214,7 +214,7 @@ MonoBehaviour:
   distanceToAttack: 5
   distanceToDoDamage: 0
   damage: 0
-  scoreCost: 15
+  scoreCost: 10
   AttackHitting: 0
 --- !u!195 &625527957261090728
 NavMeshAgent:

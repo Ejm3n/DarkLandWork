@@ -53,15 +53,6 @@ namespace DigitalRuby.SoundManagerNamespace
 
             
         }
-        private void Start()
-        {
-            Button[] buttons = FindObjectsOfType<Button>();
-            Debug.Log(buttons.Length);
-            foreach (Button but in buttons)
-            {
-                but.onClick.AddListener(() => ButtonPressSound());
-            }
-        }
         private void FindSliders()
         {
             MusicSlider = MainMenu.Instance.musicSlider;
@@ -94,7 +85,6 @@ namespace DigitalRuby.SoundManagerNamespace
                 SoundVolumeChanged();
             else
                 FindSliders();
-            Debug.Log(SoundManager.MusicVolume);
         }
 
         public void ButtonPressSound()
