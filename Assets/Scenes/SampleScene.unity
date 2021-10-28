@@ -20497,7 +20497,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
       propertyPath: ammo
-      value: 25
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
       propertyPath: delay
