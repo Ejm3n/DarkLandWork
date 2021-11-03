@@ -22,11 +22,17 @@ public class PlayerMovement : MonoBehaviour
             float horizontal = Input.GetAxis(GameData.HORIZONTAL_AXIS);//вынести в общие переменные
             float vertical = Input.GetAxis(GameData.VERTICAL_AXIS);
             Vector3 movement = new Vector3(horizontal, 0f, vertical);
-            movement *= Time.deltaTime * speed;
-
-            transform.Translate(movement, Space.World);
-            anim.SetFloat("Horizontal", horizontal, 0.1f, Time.deltaTime);
-            anim.SetFloat("Vertical", vertical, 0.1f, Time.deltaTime);
+            if(movement.magnitude>0)
+            {
+                movement.Normalize();
+                movement *= Time.deltaTime * speed;
+                transform.Translate(movement, Space.World);
+            }
+            float velocityX = Vector3.Dot(movement.normalized, transform.right);
+            float velocityZ = Vector3.Dot(movement.normalized, transform.forward);
+            
+            anim.SetFloat("Horizontal", velocityX, 0.1f, Time.deltaTime);
+            anim.SetFloat("Vertical", velocityZ, 0.1f, Time.deltaTime);
         }
         else if(!dead)
         {
