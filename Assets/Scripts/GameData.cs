@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-
 public class GameData : MonoBehaviour
 {
     #region Constants
@@ -21,6 +20,7 @@ public class GameData : MonoBehaviour
     [SerializeField] float timeToBonusSpawns;
     bool canSpawn = true;
     int currentStage = 1;
+
     private void Awake()
     {
         LoadData();
@@ -31,6 +31,7 @@ public class GameData : MonoBehaviour
             Instance = this;
         }
     }
+
     private void Update()
     {
 
@@ -43,7 +44,6 @@ public class GameData : MonoBehaviour
             }
             if (checkTotalCount < 16)
             {
-
                 scoreToNewPhase += scoreStep;
                 spawner.EnableEnemiesOnScene(currentEnemyTypes);
                 currentEnemyTypes = ChangeEnemyArray(currentStage);
@@ -54,30 +54,18 @@ public class GameData : MonoBehaviour
             
         }
     }
+
+    /// <summary>
+    /// –азрешает спавнить новую волну каждые 7 сек
+    /// </summary>
+    /// <returns></returns>
     IEnumerator DelayBetweenWaves()
     {
         yield return new WaitForSeconds(7f);
         canSpawn = true;
-
     }
     private int[] ChangeEnemyArray(int stage)
     {
-        //if (currentEnemyTypes != maxEnemyTypes)
-        //{
-        //    if (currentEnemyTypes[currentAdding] != maxEnemyTypes[currentAdding])
-        //    {
-        //        BalanceEnemyTypes();
-        //    }
-        //    else
-        //    {
-        //        currentAdding++;
-        //        BalanceEnemyTypes();
-        //    }
-        //    for(int i = 0; i< currentEnemyTypes.Length;i++)
-        //    {
-        //        Debug.Log("curTypes(" + i+") = " + currentEnemyTypes[i]);
-        //    }
-        //}
         switch(stage)
         {
             case 0: return new int[] { 8, 0, 0, 0 };

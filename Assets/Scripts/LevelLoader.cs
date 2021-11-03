@@ -27,7 +27,6 @@ public class LevelLoader : MonoBehaviour
     {
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
-
         loaderCanvas.SetActive(true);
 
         do

@@ -53,10 +53,10 @@ namespace DigitalRuby.SoundManagerNamespace
 
             
         }
-        private void FindSliders()
+        public void FindSliders()
         {
-            MusicSlider = MainMenu.Instance.musicSlider;
-            SoundSlider = MainMenu.Instance.soundSlider;
+            MusicSlider = Settings.Instance.musicSlider;
+            SoundSlider = Settings.Instance.soundSlider;
             MusicSlider.value = SoundManager.MusicVolume;
             SoundSlider.value = SoundManager.SoundVolume;
         }
@@ -76,15 +76,11 @@ namespace DigitalRuby.SoundManagerNamespace
                     currentMusic = 0;
                 PlayMusic(currentMusic);
             }
-            if (MusicSlider != null)
-                MusicVolumeChanged();
-            else
-                FindSliders();
-            
-            if(SoundSlider!=null)
+            if (Settings.Instance != null)
+                MusicVolumeChanged();          
+            if(Settings.Instance != null)
                 SoundVolumeChanged();
-            else
-                FindSliders();
+
         }
 
         public void ButtonPressSound()
@@ -126,12 +122,27 @@ namespace DigitalRuby.SoundManagerNamespace
         }
         public void SoundVolumeChanged()
         {
-            SoundManager.SoundVolume = SoundSlider.value;
+            try
+            {
+                SoundManager.SoundVolume = SoundSlider.value;
+            }
+            catch
+            {
+                Debug.Log("Не присвоенный SoundVolume");
+            }
         }
 
         public void MusicVolumeChanged()
         {
-            SoundManager.MusicVolume = MusicSlider.value;
+            try
+            {
+                SoundManager.MusicVolume = MusicSlider.value;
+            }
+            catch
+            {
+                Debug.Log("Не присвоенный MusicVolume");
+            }
+            
         }
 
         public void PersistToggleChanged(bool isOn)

@@ -11,8 +11,6 @@ public class MainMenu : MonoBehaviour
     [SerializeField] CanvasGroup mainMenu;
     [SerializeField] CanvasGroup settings;
     [SerializeField] CanvasGroup checkBox;
-    public Slider musicSlider;
-    public Slider soundSlider;
     private void Awake()
     {
         if (Instance == null)

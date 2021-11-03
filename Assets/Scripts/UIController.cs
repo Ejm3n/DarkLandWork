@@ -14,6 +14,7 @@ public class UIController : MonoBehaviour
     [SerializeField] CanvasGroup pauseCanvas;
     [SerializeField] CanvasGroup confirmCanvas;
     [SerializeField] CanvasGroup deathCanvas;
+    [SerializeField] CanvasGroup settingsCanvas;
     [SerializeField] Text currentScore;
     [SerializeField] Animator[] heartAnims;
     [SerializeField] Text bestScore;
@@ -33,6 +34,7 @@ public class UIController : MonoBehaviour
         ChangeStates(pauseCanvas,gameCanvas);
         ChangeStates(confirmCanvas, gameCanvas);
         ChangeStates(deathCanvas, gameCanvas);
+        ChangeStates(settingsCanvas, gameCanvas);
         bestScore.text = gd.HighScore.ToString();
     }
     // Update is called once per frame
@@ -78,6 +80,7 @@ public class UIController : MonoBehaviour
     }
     public void OnRestart()
     {
+        Debug.Log(SceneManager.GetActiveScene().name);
         LevelLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);        
     }
     public void OpenConfirmMenu()
@@ -88,11 +91,16 @@ public class UIController : MonoBehaviour
     public void BackToPauseMenu()
     {
         ChangeStates( confirmCanvas, pauseCanvas);
+        ChangeStates(settingsCanvas, pauseCanvas);
     }
     public void ToMainMenu()
     {
         gd.SaveData();
         LevelLoader.Instance.LoadScene(0);
+    }
+    public void ToSettings()
+    {
+        ChangeStates(pauseCanvas,settingsCanvas);
     }
     void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
     {
