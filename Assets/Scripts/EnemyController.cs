@@ -29,7 +29,6 @@ public class EnemyController : MonoBehaviour
         _spawner = FindObjectOfType<Spawner>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_health.IsAlive)
