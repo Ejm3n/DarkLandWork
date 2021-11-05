@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
 
-    [SerializeField] float speed;
-    Animator anim;
-    Health health;
-    bool dead = false;
+    [SerializeField] private float speed;
+    private  Animator anim;
+    private Health health;
+    private bool dead = false;
     // Update is called once per frame
     private void Awake()
     {
@@ -22,9 +22,12 @@ public class PlayerMovement : MonoBehaviour
             float horizontal = Input.GetAxis(GameData.HORIZONTAL_AXIS);//вынести в общие переменные
             float vertical = Input.GetAxis(GameData.VERTICAL_AXIS);
             Vector3 movement = new Vector3(horizontal, 0f, vertical);
-            if(movement.magnitude>0)
+            
+            if(movement.magnitude>=.5f)
             {
+                Debug.Log("Do" + movement + " mag = " + movement.magnitude);
                 movement.Normalize();
+                Debug.Log("Posle =" + movement + " mag = " + movement.magnitude);
                 movement *= Time.deltaTime * speed;
                 transform.Translate(movement, Space.World);
             }

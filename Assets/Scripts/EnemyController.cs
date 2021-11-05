@@ -1,87 +1,85 @@
-using System;
+using DigitalRuby.SoundManagerNamespace;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using DigitalRuby.SoundManagerNamespace;
-[RequireComponent (typeof (NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class EnemyController : MonoBehaviour
 {
-    public int TypeNum;
-    NavMeshAgent agent;
-    Transform player;
-    [SerializeField] float distanceToAttack = 2f;
-    [SerializeField] float distanceToDoDamage = 4f;
-    [SerializeField] int damage;
-    [SerializeField] int scoreCost;
-    bool alive = true;
-    Animator anim;
-    Health health;
-    bool attacking = false;
+    [SerializeField] private float _distanceToAttack = 2f;
+    [SerializeField] private float _distanceToDoDamage = 4f;
+    [SerializeField] private int _damage;
+    [SerializeField] private int _scoreCost;
     [HideInInspector] public bool AttackHitting = false;
-    Spawner spawner;
-    GameData gd;
+    public int TypeNum;
+    private NavMeshAgent _agent;
+    private Transform _player;   
+    private bool _alive = true;
+    private Animator _anim;
+    private Health _health;
+    private bool _attacking = false;   
+    private Spawner _spawner;
+    private GameData _gameData;
     void Awake()
     {
-        gd = FindObjectOfType<GameData>();
-        agent = GetComponent<NavMeshAgent>();
-        player = FindObjectOfType<PlayerMovement>().transform;
-        anim = GetComponent<Animator>();
-        health = GetComponent<Health>();
-        spawner = FindObjectOfType<Spawner>();
+        _gameData = FindObjectOfType<GameData>();
+        _agent = GetComponent<NavMeshAgent>();
+        _player = FindObjectOfType<PlayerMovement>().transform;
+        _anim = GetComponent<Animator>();
+        _health = GetComponent<Health>();
+        _spawner = FindObjectOfType<Spawner>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(health.IsAlive)
+        if (_health.IsAlive)
         {
-            if (agent.enabled)
+            if (_agent.enabled)
             {
-                agent.SetDestination(player.position);
+                _agent.SetDestination(_player.position);
             }
-            if (Vector3.Distance(transform.position, player.position) < distanceToAttack)
+            if (Vector3.Distance(transform.position, _player.position) < _distanceToAttack)
             {
                 Attack();
             }
         }
-        else if(alive)
+        else if (_alive)
         {
             Die();
         }
     }
     private void OnEnable()
     {
-        agent.enabled = true;
-        alive = true;
+        _agent.enabled = true;
+        _alive = true;
     }
     private void Die()
     {
         SoundManagerDemo.Instance.ZombieDeath(TypeNum);
-        alive = false;
+        _alive = false;
         GetComponent<Collider>().enabled = false;
-        agent.enabled = false;
-        anim.SetTrigger("Died");
-        gd.AddScore(scoreCost);
+        _agent.enabled = false;
+        _anim.SetTrigger("Died");
+        _gameData.AddScore(_scoreCost);
         StartCoroutine(WaitAndTurnOff());
-        
+
     }
     IEnumerator WaitAndTurnOff()
     {
         yield return new WaitForSeconds(5f);
         gameObject.SetActive(false);
-        spawner.DisableEnemy(gameObject);
+        _spawner.DisableEnemy(gameObject);
     }
     void Attack()
     {
-        if(!attacking)
+        if (!_attacking)
         {
-            anim.SetTrigger("Attack");
-            agent.enabled = false;
-            attacking = true;
+            _anim.SetTrigger("Attack");
+            _agent.enabled = false;
+            _attacking = true;
             SoundManagerDemo.Instance.ZombieAttack(TypeNum);
         }
-        
+
     }
     public void TakeHit()
     {
@@ -90,13 +88,13 @@ public class EnemyController : MonoBehaviour
     //animation event
     void AttackComplete()
     {
-        if(alive)
-            agent.enabled = true;
-        attacking = false;
+        if (_alive)
+            _agent.enabled = true;
+        _attacking = false;
     }
     void AttackHit()
-    {       
-        if(Vector3.Distance(transform.position, player.position) < distanceToDoDamage)
-            player.gameObject.GetComponent<Health>().TakeDamage(damage);
+    {
+        if (Vector3.Distance(transform.position, _player.position) < _distanceToDoDamage)
+            _player.gameObject.GetComponent<Health>().TakeDamage(_damage);
     }
 }
