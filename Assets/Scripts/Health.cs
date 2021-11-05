@@ -1,21 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using DigitalRuby.SoundManagerNamespace;
+using UnityEngine;
 public class Health : MonoBehaviour
 {
+    
+    [SerializeField] private int _startHP;
     public int CurrentHP;
     public bool IsAlive = true;
-    [SerializeField] private int startHP;
-    EnemyController ec;
+    private EnemyController _enemyController;
+
     private void Awake()
     {
-       if(GetComponent<EnemyController>()!=null)
+        if (GetComponent<EnemyController>() != null)
         {
-            ec = GetComponent<EnemyController>();
+            _enemyController = GetComponent<EnemyController>();
         }
-        startHP = CurrentHP;
+        _startHP = CurrentHP;
     }
+
     public void TakeDamage(int dmg)
     {
         CurrentHP -= dmg;
@@ -24,32 +25,34 @@ public class Health : MonoBehaviour
             CurrentHP = 0;
             IsAlive = false;
         }
-        if (ec != null)
-            ec.TakeHit();
-        else if (dmg>0)
+        if (_enemyController != null)
+            _enemyController.TakeHit();
+        else if (dmg > 0)
             SoundManagerDemo.Instance.PlayerHit();
     }
+    
+    public void Revive()
+    {
+        GetComponent<Collider>().enabled = true;
+        CurrentHP = _startHP;
+        IsAlive = true;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "HpBonus")
+        if (other.CompareTag("HpBonus"))
         {
-            if(CurrentHP != startHP)
+            if (CurrentHP != _startHP)
             {
                 TakeDamage(-1);
                 other.gameObject.SetActive(false);
                 SoundManagerDemo.Instance.PickUpMeds();
-            }           
+            }
         }
-        if(other.GetComponent<BulletShot>()!=null)
+        if (other.GetComponent<BulletShot>() != null)
         {
             TakeDamage(other.GetComponent<BulletShot>().Damage);
             other.gameObject.SetActive(false);
-        }        
-    }
-    public void Revive()
-    {
-        GetComponent<Collider>().enabled = true;
-        CurrentHP = startHP;
-        IsAlive = true;
+        }
     }
 }

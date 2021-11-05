@@ -3,20 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 public class EnemyShooting : MonoBehaviour
 {
-    [SerializeField] List<Bullets> bullets;
-    [SerializeField] Transform firePoint;
-    [SerializeField] List<GameObject> bulletsOnScene;
-    EnemyController ec;
+    [SerializeField] private List<Bullets> _bullets;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private List<GameObject> _bulletsOnScene;
 
-    void Awake()
+    private void Awake()
     {
-        ec = GetComponent<EnemyController>();
-        for (int i = 0; i < bullets.Count; i++)
+        for (int i = 0; i < _bullets.Count; i++)
         {
-            for (int j = 0; j < bullets[i].Count; j++)
+            for (int j = 0; j < _bullets[i].Count; j++)
             {
-                GameObject enemyBullet = Instantiate(bullets[i].prefab);
-                bulletsOnScene.Add(enemyBullet);
+                GameObject enemyBullet = Instantiate(_bullets[i].prefab);
+                _bulletsOnScene.Add(enemyBullet);
                 enemyBullet.SetActive(false);
             }
         }
@@ -25,24 +23,25 @@ public class EnemyShooting : MonoBehaviour
     public void Shoot()
     {        
         bool freeBullet = false;
-        for (int i = 0; i < bulletsOnScene.Count; i++)
+        for (int i = 0; i < _bulletsOnScene.Count; i++)
         {
-            if (!bulletsOnScene[i].activeInHierarchy)
+            if (!_bulletsOnScene[i].activeInHierarchy)
             {
-                bulletsOnScene[i].transform.position = firePoint.position;
-                bulletsOnScene[i].transform.rotation = transform.rotation;
-                bulletsOnScene[i].SetActive(true);
-                bulletsOnScene[i].GetComponent<BulletShot>().Launch(transform.forward);
+                _bulletsOnScene[i].transform.position = _firePoint.position;
+                _bulletsOnScene[i].transform.rotation = transform.rotation;
+                _bulletsOnScene[i].SetActive(true);
+                _bulletsOnScene[i].GetComponent<BulletShot>().Launch(transform.forward);
                 freeBullet = true;
                 break;
             }
         }
         if (!freeBullet)
         {
-            bulletsOnScene.Add(Instantiate(bullets[0].prefab, firePoint.position, transform.rotation));
-            bulletsOnScene[bulletsOnScene.Count - 1].GetComponent<BulletShot>().Launch(transform.forward);
+            _bulletsOnScene.Add(Instantiate(_bullets[0].prefab, _firePoint.position, transform.rotation));
+            _bulletsOnScene[_bulletsOnScene.Count - 1].GetComponent<BulletShot>().Launch(transform.forward);
         }
     }
+
     void AttackHit()
     {
         Shoot();

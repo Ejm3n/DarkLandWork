@@ -1,16 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 using DigitalRuby.SoundManagerNamespace;
+using UnityEngine;
 
 public class MainMenu : MonoBehaviour
 {
     public static MainMenu Instance;
-    [SerializeField] CanvasGroup mainMenu;
-    [SerializeField] CanvasGroup settings;
-    [SerializeField] CanvasGroup checkBox;
+    [SerializeField] private CanvasGroup _mainMenu;
+    [SerializeField] private CanvasGroup _settings;
+    [SerializeField] private CanvasGroup _checkBox;
+
     private void Awake()
     {
         if (Instance == null)
@@ -18,40 +15,49 @@ public class MainMenu : MonoBehaviour
             Instance = this;
         }
     }
+
     public void StartGame()
     {
         LevelLoader.Instance.LoadScene(1);
     }
+
     public void OpenSettings()
     {
-        ChangeStates(mainMenu, settings);
+        ChangeStates(_mainMenu, _settings);
     }
+
     public void CloseSettings()
     {
-        ChangeStates(settings, mainMenu);
+        ChangeStates(_settings, _mainMenu);
     }
+
     public void PressedExit()
     {
-        ChangeStates(mainMenu, checkBox);
+        ChangeStates(_mainMenu, _checkBox);
     }
+
     public void CloseCheckBox()
     {
-        ChangeStates(checkBox, mainMenu);
+        ChangeStates(_checkBox, _mainMenu);
     }
+
     public void ExitGame()
     {
         Application.Quit();
     }
+
     public void PressButtonSound()
     {
         SoundManagerDemo.Instance.ButtonPressSound();
     }
-    void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
+
+    private void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
     {
         SetCanvasGroup(ToOff, false);
         SetCanvasGroup(ToOn, true);
     }
-    void SetCanvasGroup(CanvasGroup cg, bool what)
+
+    private void SetCanvasGroup(CanvasGroup cg, bool what)
     {
         if (what)
             cg.alpha = 1;

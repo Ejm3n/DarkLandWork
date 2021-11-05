@@ -9,8 +9,9 @@ public class LevelLoader : MonoBehaviour
 {
     public static LevelLoader Instance;
 
-    [SerializeField] private GameObject loaderCanvas;
-    [SerializeField] private Image progressBar;
+    [SerializeField] private GameObject _loaderCanvas;
+    [SerializeField] private Image _progressBar;
+
     private void Awake()
     {
         if(Instance == null)
@@ -23,39 +24,41 @@ public class LevelLoader : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
     public async void LoadScene(int sceneName)
     {
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
-        loaderCanvas.SetActive(true);
+        _loaderCanvas.SetActive(true);
 
         do
         {
             await Task.Delay(100);
-            progressBar.fillAmount = scene.progress;
+            _progressBar.fillAmount = scene.progress;
         } while (scene.progress < 0.9f);
 
         await Task.Delay(1000);
 
         scene.allowSceneActivation = true;
-        loaderCanvas.SetActive(false);
+        _loaderCanvas.SetActive(false);
     }
+
     public async void LoadScene(string sceneName)
     {
         var scene = SceneManager.LoadSceneAsync(sceneName);
         scene.allowSceneActivation = false;
 
-        loaderCanvas.SetActive(true);
+        _loaderCanvas.SetActive(true);
 
         do
         {
             await Task.Delay(100);
-            progressBar.fillAmount = scene.progress;
+            _progressBar.fillAmount = scene.progress;
         } while (scene.progress < 0.9f);
 
         await Task.Delay(1000);
 
         scene.allowSceneActivation = true;
-        loaderCanvas.SetActive(false);
+        _loaderCanvas.SetActive(false);
     }
 }

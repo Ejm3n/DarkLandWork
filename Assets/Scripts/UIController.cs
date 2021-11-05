@@ -1,113 +1,119 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using UnityEngine.Rendering.PostProcessing;
 using DigitalRuby.SoundManagerNamespace;
+using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] Text ammoCount;
-    [SerializeField] Text hpText;
-    [SerializeField] CanvasGroup gameCanvas;
-    [SerializeField] CanvasGroup pauseCanvas;
-    [SerializeField] CanvasGroup confirmCanvas;
-    [SerializeField] CanvasGroup deathCanvas;
-    [SerializeField] CanvasGroup settingsCanvas;
-    [SerializeField] Text currentScore;
-    [SerializeField] Animator[] heartAnims;
-    [SerializeField] Text bestScore;
-    [SerializeField] Text deathCurrentScore;
-    [SerializeField] Text deathBestScore;
-    GameData gd;
-    PlayerWeapon pw;
-    Health playerHealth;
-    [SerializeField]PostProcessVolume ppv;
+    [SerializeField] private Text _ammoCount;
+    [SerializeField] private Text _hpText;
+    [SerializeField] private CanvasGroup _gameCanvas;
+    [SerializeField] private CanvasGroup _pauseCanvas;
+    [SerializeField] private CanvasGroup _confirmCanvas;
+    [SerializeField] private CanvasGroup _deathCanvas;
+    [SerializeField] private CanvasGroup _settingsCanvas;
+    [SerializeField] private Text _currentScore;
+    [SerializeField] private Animator[] _heartAnims;
+    [SerializeField] private Text _bestScore;
+    [SerializeField] private Text _deathCurrentScore;
+    [SerializeField] private Text _deathBestScore;
+    [SerializeField] PostProcessVolume _postProcessVolume;
+    private GameData _gameData;
+    private PlayerWeapon _playerWeapon;
+    private Health _playerHealth;
+
     private void Awake()
     {
-
-        gd = FindObjectOfType<GameData>();
-        pw = FindObjectOfType<PlayerWeapon>();
-        playerHealth= pw.gameObject.GetComponent<Health>();
+        _gameData = FindObjectOfType<GameData>();
+        _playerWeapon = FindObjectOfType<PlayerWeapon>();
+        _playerHealth = _playerWeapon.gameObject.GetComponent<Health>();
         Time.timeScale = 1;
-        ChangeStates(pauseCanvas,gameCanvas);
-        ChangeStates(confirmCanvas, gameCanvas);
-        ChangeStates(deathCanvas, gameCanvas);
-        ChangeStates(settingsCanvas, gameCanvas);
-        bestScore.text = gd.HighScore.ToString();
+        ChangeStates(_pauseCanvas, _gameCanvas);
+        ChangeStates(_confirmCanvas, _gameCanvas);
+        ChangeStates(_deathCanvas, _gameCanvas);
+        ChangeStates(_settingsCanvas, _gameCanvas);
+        _bestScore.text = _gameData.HighScore.ToString();
     }
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
 
-        currentScore.text = gd.CurrentScore.ToString();
-        ammoCount.text = pw.ammo.ToString();
+        _currentScore.text = _gameData.CurrentScore.ToString();
+        _ammoCount.text = _playerWeapon.Ammo.ToString();
+        SetHearts(_playerHealth.CurrentHP);
 
-        SetHearts(playerHealth.CurrentHP);
-        if(playerHealth.CurrentHP == 1)
+        if (_playerHealth.CurrentHP == 1)
         {
             ChangeVignette(true);
         }
-        else if (playerHealth.CurrentHP <= 0)
-        {            
-            gd.SaveData();
-            deathCurrentScore.text = currentScore.text;
-            deathBestScore.text = bestScore.text;
-            ChangeStates(gameCanvas, deathCanvas);
+        else if (_playerHealth.CurrentHP <= 0)
+        {
+            _gameData.SaveData();
+            _deathCurrentScore.text = _currentScore.text;
+            _deathBestScore.text = _bestScore.text;
+            ChangeStates(_gameCanvas, _deathCanvas);
             Time.timeScale = 0;
         }
         else
         {
             ChangeVignette(false);
         }
-            
     }
-    private void ChangeVignette(bool what)
+
+    public void PressButtonSound()
     {
-        if (ppv.profile.TryGetSettings<Vignette>(out var vignette))
-            vignette.active = what;
+        SoundManagerDemo.Instance.ButtonPressSound();
     }
+
     public void OnPauseClick()
     {
         Time.timeScale = 0;
-        ChangeStates(gameCanvas, pauseCanvas);
+        ChangeStates(_gameCanvas, _pauseCanvas);
     }
+
     public void OnResume()
     {
         Time.timeScale = 1;
-        ChangeStates(pauseCanvas, gameCanvas);
+        ChangeStates(_pauseCanvas, _gameCanvas);
     }
+
     public void OnRestart()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
-        LevelLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);        
+        LevelLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
+
     public void OpenConfirmMenu()
     {
-        ChangeStates(pauseCanvas, confirmCanvas);
+        ChangeStates(_pauseCanvas, _confirmCanvas);
 
     }
+
     public void BackToPauseMenu()
     {
-        ChangeStates( confirmCanvas, pauseCanvas);
-        ChangeStates(settingsCanvas, pauseCanvas);
+        ChangeStates(_confirmCanvas, _pauseCanvas);
+        ChangeStates(_settingsCanvas, _pauseCanvas);
     }
+
     public void ToMainMenu()
     {
-        gd.SaveData();
+        _gameData.SaveData();
         LevelLoader.Instance.LoadScene(0);
     }
+
     public void ToSettings()
     {
-        ChangeStates(pauseCanvas,settingsCanvas);
+        ChangeStates(_pauseCanvas, _settingsCanvas);
     }
-    void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
+
+    private void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
     {
         SetCanvasGroup(ToOff, false);
         SetCanvasGroup(ToOn, true);
     }
-    void SetCanvasGroup(CanvasGroup cg, bool what)
+
+    private void SetCanvasGroup(CanvasGroup cg, bool what)
     {
         if (what)
             cg.alpha = 1;
@@ -116,19 +122,22 @@ public class UIController : MonoBehaviour
         cg.interactable = what;
         cg.blocksRaycasts = what;
     }
-    void SetHearts(int hp)
+
+    private void SetHearts(int hp)
     {
-        for(int i = 0;i<hp;i++)
+        for (int i = 0; i < hp; i++)
         {
-            heartAnims[i].SetBool("IsFull", true);
+            _heartAnims[i].SetBool("IsFull", true);
         }
-        for(int j = heartAnims.Length-1;j>=hp;j--)
+        for (int j = _heartAnims.Length - 1; j >= hp; j--)
         {
-            heartAnims[j].SetBool("IsFull", false);
+            _heartAnims[j].SetBool("IsFull", false);
         }
     }
-    public void PressButtonSound()
+
+    private void ChangeVignette(bool what)
     {
-        SoundManagerDemo.Instance.ButtonPressSound();
+        if (_postProcessVolume.profile.TryGetSettings<Vignette>(out var vignette))
+            vignette.active = what;
     }
 }

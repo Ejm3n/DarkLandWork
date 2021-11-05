@@ -1,8 +1,6 @@
-using System;
-using System.Collections;
+using DigitalRuby.SoundManagerNamespace;
 using System.Collections.Generic;
 using UnityEngine;
-using DigitalRuby.SoundManagerNamespace;
 [System.Serializable]
 public class Bullets
 {
@@ -12,46 +10,84 @@ public class Bullets
 
 public class PlayerWeapon : MonoBehaviour
 {
-    private float nextFireTime;
-    [SerializeField ] float delay;
-    [SerializeField] LayerMask layerMask;
-    [SerializeField] Transform firePoint;
-    [SerializeField] List<Bullets> bullets;
-    [SerializeField] List<GameObject> bulletsOnScene;
-    public int ammo;
-    Health health;
+
+    [SerializeField] private float _delay;
+    [SerializeField] private LayerMask _layerMask;
+    [SerializeField] private Transform _firePoint;
+    [SerializeField] private List<Bullets> _bullets;
+    [SerializeField] private List<GameObject> _bulletsOnScene;
+    public int Ammo;
+    private float _nextFireTime;
+    private Health _health;
+
     private void Awake()
-    {       
-        health = GetComponent<Health>();
-        for (int i = 0; i < bullets.Count; i++)
+    {
+        _health = GetComponent<Health>();
+        for (int i = 0; i < _bullets.Count; i++)
         {
-            for (int j = 0; j < bullets[i].Count; j++)
+            for (int j = 0; j < _bullets[i].Count; j++)
             {
-                GameObject enemyObj = Instantiate(bullets[i].prefab);
-                bulletsOnScene.Add(enemyObj);
+                GameObject enemyObj = Instantiate(_bullets[i].prefab);
+                _bulletsOnScene.Add(enemyObj);
                 enemyObj.SetActive(false);
             }
         }
     }
-    void Update()
+    private void Update()
     {
-        if(health.IsAlive)
+        if (_health.IsAlive)
         {
-            if(Time.timeScale == 1)
+            if (Time.timeScale == 1)
                 AimTowardMouse();
-            if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && ammo > 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
+            if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && Ammo > 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
                 Fire();
-            else if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && ammo <= 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
+            else if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && Ammo <= 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
                 SoundManagerDemo.Instance.NoAmmo();
-            
         }
-        
+    }
+
+    public void Shoot()
+    {
+        Ammo--;
+        bool freeBullet = false;
+        for (int i = 0; i < _bulletsOnScene.Count; i++)
+        {
+            if (!_bulletsOnScene[i].activeInHierarchy)
+            {
+                _bulletsOnScene[i].transform.position = _firePoint.position;
+                _bulletsOnScene[i].transform.rotation = transform.rotation;
+                _bulletsOnScene[i].SetActive(true);
+                _bulletsOnScene[i].GetComponent<BulletShot>().Launch(transform.forward);
+                freeBullet = true;
+                break;
+            }
+        }
+        if (!freeBullet)
+        {
+            _bulletsOnScene.Add(Instantiate(_bullets[0].prefab, _firePoint.position, transform.rotation));
+            _bulletsOnScene[_bulletsOnScene.Count - 1].GetComponent<BulletShot>().Launch(transform.forward);
+        }
+    }
+
+    public void AddAmmo(int count)
+    {
+        Ammo += count;
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "AmmoBonus")
+        {
+            AddAmmo(other.GetComponent<Bonus>().countToAdd);
+            other.gameObject.SetActive(false);
+            SoundManagerDemo.Instance.PickUpAmmo();
+        }
     }
 
     private void AimTowardMouse()
     {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if(Physics.Raycast(ray,out RaycastHit hit,Mathf.Infinity,layerMask))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, _layerMask))
         {
             Vector3 destination = hit.point;
             destination.y = transform.position.y;
@@ -63,50 +99,12 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
-    bool ReadyToFire() => Time.time >= nextFireTime;
-    void Fire()
+    private bool ReadyToFire() => Time.time >= _nextFireTime;
+
+    private void Fire()
     {
         SoundManagerDemo.Instance.AkShot();
-        nextFireTime = Time.time + delay;
+        _nextFireTime = Time.time + _delay;
         Shoot();
-        //BulletShot shot = Instantiate(bulletPrefab, firePoint.position, transform.rotation);
-
-        //shot.Launch(transform.forward);
-    }
-    public void Shoot()
-    {
-        ammo--;
-        bool freeBullet = false;
-        for (int i = 0; i < bulletsOnScene.Count; i++)
-        {
-            if (!bulletsOnScene[i].activeInHierarchy)
-            {
-                bulletsOnScene[i].transform.position = firePoint.position;
-                bulletsOnScene[i].transform.rotation = transform.rotation;
-                bulletsOnScene[i].SetActive(true);
-                bulletsOnScene[i].GetComponent<BulletShot>().Launch(transform.forward);
-                freeBullet = true;
-                break;
-            }
-        }
-        if (!freeBullet)
-        {
-            bulletsOnScene.Add(Instantiate(bullets[0].prefab, firePoint.position, transform.rotation));
-            bulletsOnScene[bulletsOnScene.Count-1].GetComponent<BulletShot>().Launch(transform.forward);
-        }
-
-    }
-    public void AddAmmo(int count)
-    {
-        ammo += count;
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.tag == "AmmoBonus")
-        {
-            AddAmmo(other.GetComponent<Bonus>().countToAdd);
-            other.gameObject.SetActive(false);
-            SoundManagerDemo.Instance.PickUpAmmo();
-        }
     }
 }
