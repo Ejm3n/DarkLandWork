@@ -5205,8 +5205,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f9f68724967a842a50da086c9a94fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 225965606}
-  soundSlider: {fileID: 727041840}
+  musicSlider: {fileID: 0}
+  soundSlider: {fileID: 0}
 --- !u!225 &505082596
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -6426,6 +6426,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0edaebc598e4d34b80cc4fcf3f6550b, type: 3}
+--- !u!4 &668849181 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 271983124, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
+  m_PrefabInstance: {fileID: 8431291981653939340}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &674855211 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4000010110136030, guid: f0edaebc598e4d34b80cc4fcf3f6550b, type: 3}
@@ -8281,10 +8286,10 @@ MonoBehaviour:
   CurrentRound: 0
   HighScore: 0
   currentEnemyTypes: 08000000000000000000000000000000
-  maxEnemyTypes: 00000000030000000300000002000000
-  scoreToNewPhase: 0
+  maxEnemyTypes: 01000000020000000300000002000000
+  scoreToNewPhase: 50
   scoreStep: 50
-  timeToBonusSpawns: 15
+  timeToBonusSpawns: 0
 --- !u!114 &780553386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8297,41 +8302,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d428899f991e5dd4bb376663abbe3904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemies:
-  - Count: 70
-    prefab: {fileID: 8148738703176586478, guid: 5da164005eb1f6e4e80efb6209ae68bf, type: 3}
-  - Count: 70
-    prefab: {fileID: 319539577286655170, guid: 41d2138901c7e8d42a208a51930e4d75, type: 3}
-  - Count: 70
-    prefab: {fileID: 729241636162016843, guid: e904076b1a2e69a4ba008225a9c5e670, type: 3}
-  - Count: 70
-    prefab: {fileID: 3781106619328525842, guid: a965ebf779246e24296646ef79f3fca3, type: 3}
-  SpawnPoints:
-  - {fileID: 4407272}
-  - {fileID: 1143025597}
-  - {fileID: 1832947034}
-  - {fileID: 1578669091}
-  - {fileID: 1817790564}
-  - {fileID: 901574712}
-  - {fileID: 1067174412}
-  - {fileID: 1379179865}
-  bonuses:
-  - Count: 7
-    prefab: {fileID: 245718330211174996, guid: 3fed0edb4320b894ba57fbbb7ad16653, type: 3}
-  - Count: 7
-    prefab: {fileID: 2469864174866640290, guid: 90e1800b33aeb944ca9216738d6ecbb8, type: 3}
-  BonusesSpawnPoints:
-  - {fileID: 1263988213}
-  - {fileID: 815016315}
-  - {fileID: 372661352}
-  - {fileID: 831415243}
-  - {fileID: 850133039}
-  - {fileID: 248497574}
-  - {fileID: 2060801377}
-  - {fileID: 1901727936}
-  - {fileID: 1947678955}
-  - {fileID: 1174118231}
-  - {fileID: 1715246940}
+  enemies: []
+  SpawnPoints: []
+  bonuses: []
+  BonusesSpawnPoints: []
 --- !u!4 &780553387
 Transform:
   m_ObjectHideFlags: 0
@@ -8360,22 +8334,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1407823b22f771b46b21efd4b7b3e17f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ammoCount: {fileID: 130861545}
-  hpText: {fileID: 1762214159}
-  gameCanvas: {fileID: 1353067392}
-  pauseCanvas: {fileID: 1402330530688537603}
-  confirmCanvas: {fileID: 888867869}
-  deathCanvas: {fileID: 833777769}
-  settingsCanvas: {fileID: 505082596}
-  currentScore: {fileID: 907819335}
-  heartAnims:
-  - {fileID: 589056115}
-  - {fileID: 1941796564}
-  - {fileID: 904978733}
-  bestScore: {fileID: 1557402513}
-  deathCurrentScore: {fileID: 1970110615}
-  deathBestScore: {fileID: 1809288754}
-  ppv: {fileID: 1854399429}
+  ammoCount: {fileID: 0}
+  hpText: {fileID: 0}
+  gameCanvas: {fileID: 0}
+  pauseCanvas: {fileID: 0}
+  confirmCanvas: {fileID: 0}
+  deathCanvas: {fileID: 0}
+  settingsCanvas: {fileID: 0}
+  currentScore: {fileID: 0}
+  heartAnims: []
+  bestScore: {fileID: 0}
+  deathCurrentScore: {fileID: 0}
+  deathBestScore: {fileID: 0}
+  ppv: {fileID: 0}
 --- !u!1001 &785763963
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22726,6 +22697,10 @@ PrefabInstance:
       propertyPath: delay
       value: 0.15
       objectReference: {fileID: 0}
+    - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
+      propertyPath: _firePoint
+      value: 
+      objectReference: {fileID: 668849181}
     - target: {fileID: 919132148849565425, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
       propertyPath: startHP
       value: 3
