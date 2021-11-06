@@ -664,7 +664,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa44a406f9188514ab19a33ce3766767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _distanceToAttack: 5
+  _distanceToAttack: 4
   _distanceToDoDamage: 5
   _damage: 2
   _scoreCost: 25
