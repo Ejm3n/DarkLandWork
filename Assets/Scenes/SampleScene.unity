@@ -5228,8 +5228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47f9f68724967a842a50da086c9a94fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicSlider: {fileID: 225965606}
-  soundSlider: {fileID: 727041840}
+  _musicSlider: {fileID: 225965606}
+  _soundSlider: {fileID: 727041840}
 --- !u!225 &505082596
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -8308,9 +8308,9 @@ MonoBehaviour:
   _scoreToNewPhase: 0
   _scoreStep: 50
   _timeToBonusSpawns: 15
-  currentScore: 0
-  currentRound: 0
-  highScore: 0
+  _currentScore: 0
+  _currentRound: 0
+  _highScore: 0
 --- !u!114 &780553386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22876,6 +22876,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
       propertyPath: ammo
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}
+      propertyPath: _ammo
       value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 919132148849565421, guid: 8835e03a3b49b3c409fca2d376fb4220, type: 3}

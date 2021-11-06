@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _speed: 15
-  damage: 1
+  _damage: 1
 --- !u!136 &8586672084258295405
 CapsuleCollider:
   m_ObjectHideFlags: 0

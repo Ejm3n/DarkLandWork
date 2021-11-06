@@ -91,7 +91,6 @@ public class UIController : MonoBehaviour
     /// </summary>
     public void OnRestart()
     {
-        Debug.Log(SceneManager.GetActiveScene().name);
         LevelLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
 

@@ -13,12 +13,12 @@ public class GameData : MonoBehaviour
     [SerializeField] private int _scoreToNewPhase = 50;
     [SerializeField] private int _scoreStep = 50;
     [SerializeField] private float _timeToBonusSpawns;
-    [SerializeField] private int currentScore;
-    [SerializeField] private int currentRound;
-    [SerializeField] private int highScore;
-    public int CurrentScore { get => currentScore; set => currentScore = value; }
-    public int CurrentRound { get => currentRound; set => currentRound = value; }
-    public int HighScore { get => highScore; set => highScore = value; }
+    [SerializeField] private int _currentScore;
+    [SerializeField] private int _currentRound;
+    [SerializeField] private int _highScore;
+    public int CurrentScore { get => _currentScore; set => _currentScore = value; }
+    public int CurrentRound { get => _currentRound; set => _currentRound = value; }
+    public int HighScore { get => _highScore; set => _highScore = value; }
 
     private Spawner _spawner;
     private bool _canSpawn = true;

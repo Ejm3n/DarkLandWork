@@ -214,8 +214,7 @@ MonoBehaviour:
   _distanceToDoDamage: 0
   _damage: 1
   _scoreCost: 15
-  AttackHitting: 0
-  TypeNum: 1
+  _typeNum: 1
 --- !u!195 &625527957261090728
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -251,8 +250,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHP: 1
-  currentHP: 1
-  isAlive: 1
+  _currentHP: 0
+  _isAlive: 1
 --- !u!1 &389601814753781651
 GameObject:
   m_ObjectHideFlags: 0

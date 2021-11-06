@@ -7,11 +7,11 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     public static Settings Instance;
-    [SerializeField] private Slider musicSlider;
-    [SerializeField]private Slider soundSlider;
+    [SerializeField] private Slider _musicSlider;
+    [SerializeField]private Slider _soundSlider;
 
-    public Slider MusicSlider { get => musicSlider; set => musicSlider = value; }
-    public Slider SoundSlider { get => soundSlider; set => soundSlider = value; }
+    public Slider MusicSlider { get => _musicSlider; set => _musicSlider = value; }
+    public Slider SoundSlider { get => _soundSlider; set => _soundSlider = value; }
 
     private void Awake()
     {

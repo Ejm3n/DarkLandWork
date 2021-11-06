@@ -8,9 +8,9 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float _distanceToAttack = 2f;
     [SerializeField] private float _distanceToDoDamage = 4f;
     [SerializeField] private int _damage;
-    [SerializeField] private int _scoreCost;
-    [HideInInspector] public bool AttackHitting = false;
-    public int TypeNum;
+    [SerializeField] private int _scoreCost;   
+    [SerializeField]private int _typeNum;
+    private bool attackHitting = false;
     private NavMeshAgent _agent;
     private Transform _player;   
     private bool _alive = true;
@@ -19,6 +19,9 @@ public class EnemyController : MonoBehaviour
     private bool _attacking = false;   
     private Spawner _spawner;
     private GameData _gameData;
+
+    public int TypeNum { get => _typeNum; set => _typeNum = value; }
+    public bool AttackHitting { get => attackHitting; set => attackHitting = value; }
 
     private void Awake()
     {

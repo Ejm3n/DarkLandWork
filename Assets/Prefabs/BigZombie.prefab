@@ -650,8 +650,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _startHP: 4
-  currentHP: 4
-  isAlive: 1
+  _currentHP: 0
+  _isAlive: 1
 --- !u!114 &4087115334764401300
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -668,8 +668,7 @@ MonoBehaviour:
   _distanceToDoDamage: 5
   _damage: 2
   _scoreCost: 25
-  AttackHitting: 0
-  TypeNum: 3
+  _typeNum: 3
 --- !u!195 &4087115334764401301
 NavMeshAgent:
   m_ObjectHideFlags: 0

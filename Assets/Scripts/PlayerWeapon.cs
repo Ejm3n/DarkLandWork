@@ -16,11 +16,11 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private List<Bullets> _bullets;
     [SerializeField] private List<GameObject> _bulletsOnScene;
-    [SerializeField] private int ammo;
+    [SerializeField] private int _ammo;
     private float _nextFireTime;
     private Health _health;
 
-    public int Ammo { get => ammo; set => ammo = value; }
+    public int Ammo { get => _ammo; set => _ammo = value; }
 
     private void Awake()
     {
@@ -40,7 +40,6 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (_health.IsAlive)
         {
-            Debug.Log("sadfawe");
             if (Time.timeScale == 1)
                 AimTowardMouse();
             if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && Ammo > 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))

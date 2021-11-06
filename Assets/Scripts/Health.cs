@@ -4,10 +4,10 @@ public class Health : MonoBehaviour
 {
     
     [SerializeField] private int _startHP;
-     [SerializeField] private int currentHP;
-    [SerializeField] private bool isAlive = true;
-    public bool IsAlive { get => isAlive; set => isAlive = value; }
-    public int CurrentHP { get => currentHP; set => currentHP = value; }
+     [SerializeField] private int _currentHP;
+    [SerializeField] private bool _isAlive = true;
+    public bool IsAlive { get => _isAlive; set => _isAlive = value; }
+    public int CurrentHP { get => _currentHP; set => _currentHP = value; }
 
     
     private EnemyController _enemyController;

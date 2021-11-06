@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    [SerializeField]private int countToAdd;
+    [SerializeField]private int _countToAdd;
 
-    public int CountToAdd { get => countToAdd; set => countToAdd = value; }
+    public int CountToAdd { get => _countToAdd; set => _countToAdd = value; }
 }
