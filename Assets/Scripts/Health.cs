@@ -4,10 +4,12 @@ public class Health : MonoBehaviour
 {
     
     [SerializeField] private int _startHP;
-    public int CurrentHP { get; private set; }
+     [SerializeField] private int currentHP;
+    [SerializeField] private bool isAlive = true;
     public bool IsAlive { get => isAlive; set => isAlive = value; }
+    public int CurrentHP { get => currentHP; set => currentHP = value; }
 
-    private bool isAlive = true;
+    
     private EnemyController _enemyController;
 
     private void Awake()
@@ -16,7 +18,7 @@ public class Health : MonoBehaviour
         {
             _enemyController = GetComponent<EnemyController>();
         }
-        _startHP = CurrentHP;
+        CurrentHP= _startHP  ;
     }
 
     /// <summary>

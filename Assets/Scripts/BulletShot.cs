@@ -6,7 +6,9 @@ using UnityEngine;
 public class BulletShot : MonoBehaviour
 {
     [SerializeField]private float _speed = 15f;
-    public int Damage {get;private set; }
+    [SerializeField] private int damage;
+
+    public int Damage { get => damage; set => damage = value; }
 
     private void OnEnable()
     {

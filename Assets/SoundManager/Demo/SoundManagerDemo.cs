@@ -9,10 +9,10 @@ namespace DigitalRuby.SoundManagerNamespace
     public class SoundManagerDemo : MonoBehaviour
     {
         public static SoundManagerDemo Instance;
-        public Slider SoundSlider {get; private set;}
-        public Slider MusicSlider { get; private set; }
-        public AudioSource[] SoundAudioSources { get; private set; }
-        public AudioSource[] MusicAudioSources { get; private set; }
+        public Slider SoundSlider;
+        public Slider MusicSlider;       
+        public AudioSource[] SoundAudioSources;
+        public AudioSource[] MusicAudioSources;
         int _currentMusic;
       
         private void Awake()

@@ -6,8 +6,7 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
-    [SerializeField] private Text _ammoCount;
-    [SerializeField] private Text _hpText;
+    [SerializeField] private Text _ammoCount;   
     [SerializeField] private CanvasGroup _gameCanvas;
     [SerializeField] private CanvasGroup _pauseCanvas;
     [SerializeField] private CanvasGroup _confirmCanvas;

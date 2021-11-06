@@ -1244,12 +1244,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa44a406f9188514ab19a33ce3766767, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TypeNum: 0
-  distanceToAttack: 2
-  distanceToDoDamage: 2
-  damage: 1
-  scoreCost: 10
+  _distanceToAttack: 2
+  _distanceToDoDamage: 4
+  _damage: 1
+  _scoreCost: 10
   AttackHitting: 0
+  TypeNum: 0
 --- !u!195 &9067799373691777100
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1314,9 +1314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb634523fc308fc4c8f08914cb1c5970, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentHP: 2
-  IsAlive: 1
-  startHP: 2
+  _startHP: 2
+  currentHP: 2
+  isAlive: 1
 --- !u!1 &8307924340705748252
 GameObject:
   m_ObjectHideFlags: 0

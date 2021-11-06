@@ -16,9 +16,11 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private List<Bullets> _bullets;
     [SerializeField] private List<GameObject> _bulletsOnScene;
-    public int Ammo { get; private set; }
+    [SerializeField] private int ammo;
     private float _nextFireTime;
     private Health _health;
+
+    public int Ammo { get => ammo; set => ammo = value; }
 
     private void Awake()
     {
@@ -38,6 +40,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (_health.IsAlive)
         {
+            Debug.Log("sadfawe");
             if (Time.timeScale == 1)
                 AimTowardMouse();
             if (ReadyToFire() && Input.GetKeyDown(KeyCode.Mouse0) && Ammo > 0 && !(UnityEngine.EventSystems.EventSystem.current.IsPointerOverGameObject()))
@@ -86,7 +89,7 @@ public class PlayerWeapon : MonoBehaviour
     {
         if (other.tag == "AmmoBonus")
         {
-            AddAmmo(other.GetComponent<Bonus>().countToAdd);
+            AddAmmo(other.GetComponent<Bonus>().CountToAdd);
             other.gameObject.SetActive(false);
             SoundManagerDemo.Instance.PickUpAmmo();
         }

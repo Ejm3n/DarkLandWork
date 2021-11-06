@@ -23,10 +23,8 @@ public class PlayerMovement : MonoBehaviour
             Vector3 movement = new Vector3(horizontal, 0f, vertical);
 
             if (movement.magnitude >= .5f)
-            {
-                Debug.Log("Do" + movement + " mag = " + movement.magnitude);
-                movement.Normalize();
-                Debug.Log("Posle =" + movement + " mag = " + movement.magnitude);
+            {               
+                movement.Normalize();                
                 movement *= Time.deltaTime * _speed;
                 transform.Translate(movement, Space.World);
             }

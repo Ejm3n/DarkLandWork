@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+
 public class GameData : MonoBehaviour
 {
     #region Constants
@@ -12,9 +13,13 @@ public class GameData : MonoBehaviour
     [SerializeField] private int _scoreToNewPhase = 50;
     [SerializeField] private int _scoreStep = 50;
     [SerializeField] private float _timeToBonusSpawns;
-    public int CurrentScore { get; private set; }
-    public int CurrentRound { get; private set; }
-    public int HighScore { get; private set; }
+    [SerializeField] private int currentScore;
+    [SerializeField] private int currentRound;
+    [SerializeField] private int highScore;
+    public int CurrentScore { get => currentScore; set => currentScore = value; }
+    public int CurrentRound { get => currentRound; set => currentRound = value; }
+    public int HighScore { get => highScore; set => highScore = value; }
+
     private Spawner _spawner;
     private bool _canSpawn = true;
     private int _currentStage = 1;
