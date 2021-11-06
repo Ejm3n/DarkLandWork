@@ -23,10 +23,13 @@ public class Spawner : MonoBehaviour
     [SerializeField] private List<Bonuses> _bonuses;
     [SerializeField] private List<List<GameObject>> _bonusesOnScene = new List<List<GameObject>>();
     [SerializeField] private Transform[] _bonusesSpawnPoints;
-    public List<List<GameObject>> DeactivatedEnemiesOnScene = new List<List<GameObject>>();
-    public List<List<GameObject>> ActiveEnemiesOnScene = new List<List<GameObject>>();
+    private List<List<GameObject>> deactivatedEnemiesOnScene = new List<List<GameObject>>();
+    private List<List<GameObject>> activeEnemiesOnScene = new List<List<GameObject>>();
     private int _currentBonusPoint = 0;
     private int _currentEnemySpawnPoint = 0;
+
+    public List<List<GameObject>> DeactivatedEnemiesOnScene { get => deactivatedEnemiesOnScene; set => deactivatedEnemiesOnScene = value; }
+    public List<List<GameObject>> ActiveEnemiesOnScene { get => activeEnemiesOnScene; set => activeEnemiesOnScene = value; }
 
     private void Awake()
     {

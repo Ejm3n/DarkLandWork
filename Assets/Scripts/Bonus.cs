@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class Bonus : MonoBehaviour
 {
-    public int countToAdd;
+    public int countToAdd { get; private set; }
 }

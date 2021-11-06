@@ -7,8 +7,8 @@ using UnityEngine.UI;
 public class Settings : MonoBehaviour
 {
     public static Settings Instance;
-    public Slider MusicSlider;
-    public Slider SoundSlider;
+    public Slider MusicSlider { get; private set; }
+    public Slider SoundSlider { get; private set; }
 
     private void Awake()
     {

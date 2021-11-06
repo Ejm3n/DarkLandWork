@@ -16,7 +16,7 @@ public class PlayerWeapon : MonoBehaviour
     [SerializeField] private Transform _firePoint;
     [SerializeField] private List<Bullets> _bullets;
     [SerializeField] private List<GameObject> _bulletsOnScene;
-    public int Ammo;
+    public int Ammo { get; private set; }
     private float _nextFireTime;
     private Health _health;
 

@@ -4,8 +4,10 @@ public class Health : MonoBehaviour
 {
     
     [SerializeField] private int _startHP;
-    public int CurrentHP;
-    public bool IsAlive = true;
+    public int CurrentHP { get; private set; }
+    public bool IsAlive { get => isAlive; set => isAlive = value; }
+
+    private bool isAlive = true;
     private EnemyController _enemyController;
 
     private void Awake()

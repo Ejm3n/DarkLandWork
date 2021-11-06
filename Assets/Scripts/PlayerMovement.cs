@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour
     private Animator _anim;
     private Health _health;
     private bool _dead = false;
-    // Update is called once per frame
+    
     private void Awake()
     {
         _health = GetComponent<Health>();
