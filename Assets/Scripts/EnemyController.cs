@@ -19,7 +19,8 @@ public class EnemyController : MonoBehaviour
     private bool _attacking = false;   
     private Spawner _spawner;
     private GameData _gameData;
-    void Awake()
+
+    private void Awake()
     {
         _gameData = FindObjectOfType<GameData>();
         _agent = GetComponent<NavMeshAgent>();
@@ -29,7 +30,7 @@ public class EnemyController : MonoBehaviour
         _spawner = FindObjectOfType<Spawner>();
     }
 
-    void Update()
+    private void Update()
     {
         if (_health.IsAlive)
         {
@@ -47,11 +48,21 @@ public class EnemyController : MonoBehaviour
             Die();
         }
     }
+
     private void OnEnable()
     {
         _agent.enabled = true;
         _alive = true;
     }
+
+    /// <summary>
+    /// при получении урона воспроизвести звук получения урона у конкретного зомби
+    /// </summary>
+    public void TakeHit()
+    {
+        SoundManagerDemo.Instance.ZombieGetHit(TypeNum);
+    }    
+
     private void Die()
     {
         SoundManagerDemo.Instance.ZombieDeath(TypeNum);
@@ -61,15 +72,16 @@ public class EnemyController : MonoBehaviour
         _anim.SetTrigger("Died");
         _gameData.AddScore(_scoreCost);
         StartCoroutine(WaitAndTurnOff());
-
     }
-    IEnumerator WaitAndTurnOff()
+
+    private IEnumerator WaitAndTurnOff()
     {
         yield return new WaitForSeconds(5f);
         gameObject.SetActive(false);
         _spawner.DisableEnemy(gameObject);
     }
-    void Attack()
+
+    private void Attack()
     {
         if (!_attacking)
         {
@@ -80,10 +92,7 @@ public class EnemyController : MonoBehaviour
         }
 
     }
-    public void TakeHit()
-    {
-        SoundManagerDemo.Instance.ZombieGetHit(TypeNum);
-    }
+
     //animation event
     void AttackComplete()
     {

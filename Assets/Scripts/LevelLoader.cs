@@ -25,6 +25,10 @@ public class LevelLoader : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// загрузка сцены и включение канваса загрузки
+    /// </summary>
+    /// <param name="sceneName"></param>
     public async void LoadScene(int sceneName)
     {
         var scene = SceneManager.LoadSceneAsync(sceneName);
@@ -43,6 +47,10 @@ public class LevelLoader : MonoBehaviour
         _loaderCanvas.SetActive(false);
     }
 
+    /// <summary>
+    /// загрузка сцены и включение канваса загрузки
+    /// </summary>
+    /// <param name="sceneName"></param>
     public async void LoadScene(string sceneName)
     {
         var scene = SceneManager.LoadSceneAsync(sceneName);

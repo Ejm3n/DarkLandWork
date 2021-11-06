@@ -54,6 +54,10 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// включить зомби, каких и сколько включать передается в массиве
+    /// </summary>
+    /// <param name="typesTOACtivate"></param>
     public void EnableEnemiesOnScene(int[] typesTOACtivate)
     {
         for (int i = 0; i < typesTOACtivate.Length; i++)
@@ -80,6 +84,10 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// при смерти врага выносим из двумерного массива активных и добавляем в деактивированных
+    /// </summary>
+    /// <param name="deadEnemy"></param>
     public void DisableEnemy(GameObject deadEnemy)
     {
         EnemyController ec = deadEnemy.GetComponent<EnemyController>();
@@ -95,6 +103,10 @@ public class Spawner : MonoBehaviour
         DeactivatedEnemiesOnScene[type].Add(deadEnemy);
     }
 
+    /// <summary>
+    /// добавляем бонус на хп на сцену
+    /// </summary>
+    /// <param name="count"></param>
     public void EnableHpsOnScene(int count)
     {
         if(CheckSummaryOfBonuses())
@@ -122,6 +134,10 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// добавляем бонус пуль на сцену
+    /// </summary>
+    /// <param name="count"></param>
     public void EnableAmmoOnScene(int count)
     {
         if(CheckSummaryOfBonuses())

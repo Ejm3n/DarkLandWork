@@ -17,6 +17,10 @@ public class Health : MonoBehaviour
         _startHP = CurrentHP;
     }
 
+    /// <summary>
+    /// получение урона
+    /// </summary>
+    /// <param name="dmg"></param>
     public void TakeDamage(int dmg)
     {
         CurrentHP -= dmg;
@@ -31,6 +35,9 @@ public class Health : MonoBehaviour
             SoundManagerDemo.Instance.PlayerHit();
     }
     
+    /// <summary>
+    /// восстановить персонажа
+    /// </summary>
     public void Revive()
     {
         GetComponent<Collider>().enabled = true;

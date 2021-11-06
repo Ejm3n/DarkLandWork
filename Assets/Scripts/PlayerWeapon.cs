@@ -33,6 +33,7 @@ public class PlayerWeapon : MonoBehaviour
             }
         }
     }
+
     private void Update()
     {
         if (_health.IsAlive)
@@ -46,6 +47,9 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// находим свободную пулю, ставим её в позицию, запускаем
+    /// </summary>
     public void Shoot()
     {
         Ammo--;
@@ -69,6 +73,10 @@ public class PlayerWeapon : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// добавить пуль
+    /// </summary>
+    /// <param name="count">количество</param>
     public void AddAmmo(int count)
     {
         Ammo += count;

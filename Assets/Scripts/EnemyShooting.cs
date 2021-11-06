@@ -20,6 +20,9 @@ public class EnemyShooting : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// находим свободную пулю, ставим её в позицию, запускаем
+    /// </summary>
     public void Shoot()
     {        
         bool freeBullet = false;

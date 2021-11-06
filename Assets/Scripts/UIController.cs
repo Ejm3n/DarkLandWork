@@ -61,52 +61,81 @@ public class UIController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// проигрывание звука нажатия кнопки
+    /// </summary>
     public void PressButtonSound()
     {
         SoundManagerDemo.Instance.ButtonPressSound();
     }
 
+    /// <summary>
+    /// нажатие на паузу, смена игрового канваса на паузу
+    /// </summary>
     public void OnPauseClick()
     {
         Time.timeScale = 0;
         ChangeStates(_gameCanvas, _pauseCanvas);
     }
 
+    /// <summary>
+    /// возобновить игру, сменить канвас паузы на игровой   
+    /// </summary>
     public void OnResume()
     {
         Time.timeScale = 1;
         ChangeStates(_pauseCanvas, _gameCanvas);
     }
 
+    /// <summary>
+    /// перезагрузить уровень
+    /// </summary>
     public void OnRestart()
     {
         Debug.Log(SceneManager.GetActiveScene().name);
         LevelLoader.Instance.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    /// <summary>
+    /// открыть канвас выбора, закрыть канвас паузы
+    /// </summary>
     public void OpenConfirmMenu()
     {
         ChangeStates(_pauseCanvas, _confirmCanvas);
 
     }
 
+    /// <summary>
+    /// открыть канвас паузы, закрыть канвас выбора
+    /// </summary>
     public void BackToPauseMenu()
     {
         ChangeStates(_confirmCanvas, _pauseCanvas);
         ChangeStates(_settingsCanvas, _pauseCanvas);
     }
 
+    /// <summary>
+    /// сохранить результат и выйти в меню
+    /// </summary>
     public void ToMainMenu()
     {
         _gameData.SaveData();
         LevelLoader.Instance.LoadScene(0);
     }
 
+    /// <summary>
+    /// открыть настройки
+    /// </summary>
     public void ToSettings()
     {
         ChangeStates(_pauseCanvas, _settingsCanvas);
     }
 
+    /// <summary>
+    /// сменить текущий канвас
+    /// </summary>
+    /// <param name="ToOff"></param>
+    /// <param name="ToOn"></param>
     private void ChangeStates(CanvasGroup ToOff, CanvasGroup ToOn)
     {
         SetCanvasGroup(ToOff, false);

@@ -49,15 +49,22 @@ public class GameData : MonoBehaviour
                 _canSpawn = false;
                 StartCoroutine(DelayBetweenWaves());
             }
-            
+
         }
     }
-  
+
+    /// <summary>
+    /// добавить очков в текущий результат
+    /// </summary>
+    /// <param name="score"></param>
     public void AddScore(int score)
     {
         CurrentScore += score;
     }
 
+    /// <summary>
+    ///  сохранить информацию
+    /// </summary>
     public void SaveData()
     {
         if (CurrentScore > HighScore)
@@ -66,7 +73,10 @@ public class GameData : MonoBehaviour
         }
     }
 
-    public void LoadData()
+    /// <summary>
+    /// загрузить информацию
+    /// </summary>
+    private void LoadData()
     {
         HighScore = PlayerPrefs.GetInt("Score");
     }
@@ -75,7 +85,7 @@ public class GameData : MonoBehaviour
     /// Разрешает спавнить новую волну каждые 7 сек
     /// </summary>
     /// <returns></returns>
-    IEnumerator DelayBetweenWaves()
+    private IEnumerator DelayBetweenWaves()
     {
         yield return new WaitForSeconds(7f);
         _canSpawn = true;
@@ -96,7 +106,7 @@ public class GameData : MonoBehaviour
         return new int[] { 1, 2, 3, 2 };
     }
 
-    IEnumerator SpawnBonuses()
+    private IEnumerator SpawnBonuses()
     {
         while (true)
         {

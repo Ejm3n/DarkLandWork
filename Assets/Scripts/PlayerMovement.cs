@@ -13,6 +13,7 @@ public class PlayerMovement : MonoBehaviour
         _health = GetComponent<Health>();
         _anim = GetComponent<Animator>();
     }
+
     private void Update()
     {
         if (_health.IsAlive && !_dead)

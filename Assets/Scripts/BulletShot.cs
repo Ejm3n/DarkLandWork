@@ -13,6 +13,10 @@ public class BulletShot : MonoBehaviour
        StartCoroutine( WaitAndTurnOff());
     }
 
+    /// <summary>
+    /// запуск пули
+    /// </summary>
+    /// <param name="dir"></param>
     public void Launch(Vector3 dir)
     {
         dir.Normalize();
